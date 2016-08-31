@@ -38,7 +38,7 @@ grad = zeros(size(theta));
 
 
 lefts = sum(-y' * log(sigmoid(X*theta)));
-rights = sum(-(1-y)'' .* log(1 - sigmoid(X*theta)));
+rights = sum(-(1-y)' .* log(1 - sigmoid(X*theta)));
 
 temp=theta;
 temp(1) = 0;

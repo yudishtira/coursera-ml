@@ -62,11 +62,39 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
+X = [ones(m,1) X];
+y_matrix = eye(num_labels)(y,:) 
 
+<<<<<<< Updated upstream
 % Add bias unit to inputs
 a1 = [ones(size(X,1), 1) X];
 z2 = a1 * Theta1';
 a2 = sigmoid(z2);
+=======
+for i = 1:m
+
+	tempJ = 0;
+
+	A2 = sigmoid(X([i], :) * Theta1');
+
+	A2 = [ones(size(A2, 1),1) A2];
+	h = sigmoid(A2 * Theta2');		
+
+	for k = 1:num_labels
+	
+		lefts = -y(i) * log(sigmoid(h(k)*Theta2));
+		rights = -(1-y(i)) * log(1 - sigmoid(h(k)*Theta2));
+
+		tempJ = (lefts + rights);
+
+	end;
+
+	J = J + tempJ;
+
+end;
+
+J = (1/m) * J;
+>>>>>>> Stashed changes
 
 % Add bias unit
 a2 = [ones(size(a2,1), 1) a2];
