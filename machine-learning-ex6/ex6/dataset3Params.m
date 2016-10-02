@@ -24,8 +24,38 @@ sigma = 0.3;
 %
 
 
+bestError = 99999999;
 
+conditions = [0.01, 0.03, 0.1, 0.3, 1, 3, 10, 30];
 
+i = 1;
+while (i <= length(conditions)),
+
+	tempC = conditions(i);
+
+	j = 1;
+	while (j <= length(conditions)),
+
+		tempSigma = conditions(j);
+
+		model = svmTrain(X, y, tempC, @(x1,x2)gaussianKernel(x1, x2, tempSigma), tempSigma, 5);
+		predictions = svmPredict (model, Xval);
+
+		currentError = mean(double(predictions ~= yval));
+		
+		if (currentError < bestError)
+			bestError = currentError;
+			C = tempC;
+			sigma = tempSigma;
+		endif
+
+		j=j+1;
+
+	end
+
+i=i+1;
+
+end
 
 
 

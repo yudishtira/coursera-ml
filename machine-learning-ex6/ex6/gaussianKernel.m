@@ -17,7 +17,13 @@ sim = 0;
 %
 
 
+xdiff = (x1 - x2).^2;
+xdiff = sum(xdiff);
 
+numer = -xdiff;
+denom = 2 * (sigma^2);
+
+sim = exp (numer / denom);
 
 
 
