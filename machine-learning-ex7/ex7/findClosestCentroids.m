@@ -21,10 +21,16 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
+dists = zeros(size(X,1), K);
+
+% Loop over centroids
+for j = 1:K
+
+	for i = 1:size(X,1)
+		dists(:,j) = norm(X(i) - centroids(j));
 
 
-
-
+end
 
 
 % =============================================================
