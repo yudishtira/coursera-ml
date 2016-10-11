@@ -21,8 +21,8 @@ S = zeros(n);
 %
 
 
-
-
+sigm = (1/m) * (X' * X);
+[U,S,V] = svd(sigm);
 
 
 
