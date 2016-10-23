@@ -44,14 +44,11 @@ M = ((X * Theta') - Y).^2;
 
 J = (1/2) * sum(sum(R .* M));
 
+movieraterr = ((X * Theta') - Y);
+errfac = (R .* movieraterr);
 
-
-
-
-
-
-
-
+X_grad = errfac * Theta;
+Theta_grad = errfac' * X;
 
 
 
