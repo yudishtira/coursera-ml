@@ -50,8 +50,11 @@ errfac = (R .* movieraterr);
 X_grad = errfac * Theta;
 Theta_grad = errfac' * X;
 
+J = J + (lambda/2) * sum(sum(Theta.^2));
+J = J + (lambda/2) * sum(sum(X.^2));
 
-
+X_grad = X_grad + (lambda * X);
+Theta_grad = Theta_grad + (lambda * Theta);
 
 % =============================================================
 
